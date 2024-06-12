@@ -39,6 +39,10 @@ directory <- "/Users/carlylevitz/Documents/Data/"
         mutate(personnumber = paste0("person",row_number()) ) %>%
         ungroup()
 
+    # go back to wide form, so that person1 and person2 are always alphabetical
+      matches <- matcheslong %>%
+        pivot_wider(names_from=personnumber,values_from=person)
+
   boardroom <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx",sep="")
                                      ,sheet=3))
   boardroomoptions <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx"
