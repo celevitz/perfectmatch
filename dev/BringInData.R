@@ -15,7 +15,9 @@ directory <- "/Users/carlylevitz/Documents/Data/"
   matches <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx",sep="")
                                      ,sheet=2)) %>%
     # remove the people who chose to leave
-    filter(!(is.na(person2)))
+    #filter(!(is.na(person2)))
+    arrange(season,coupling,desc(status),person1,person2)
+
     matches$id <- as.numeric(row.names(matches))
 
     # clean the data: matches should be in alphabetical order (1 vs 2)
@@ -28,6 +30,7 @@ directory <- "/Users/carlylevitz/Documents/Data/"
       for (uniqueid in unique(matcheslong$id)) {
         asker <- matcheslong$person[matcheslong$who.asked == matcheslong$personnumber &
                                       matcheslong$id == uniqueid]
+        if (length(asker)==0) {asker <- "person0"}
         matcheslong$who.asked[matcheslong$id == uniqueid] <- asker
 
       }
