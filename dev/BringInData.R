@@ -44,11 +44,11 @@ directory <- "/Users/carlylevitz/Documents/Data/"
         pivot_wider(names_from=personnumber,values_from=person)
 
   boardroom <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx",sep="")
-                                     ,sheet=3))
+                                     ,sheet=4))
   boardroomoptions <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx"
-                                                ,sep=""),sheet=4))
+                                                ,sep=""),sheet=5))
   games <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx",sep="")
-                                     ,sheet=5))
+                                     ,sheet=3))
   voting <- as_tibble(read.xlsx(paste(directory,"PerfectMatch.xlsx",sep="")
                                      ,sheet=6))
 
