@@ -135,6 +135,24 @@ table(contestants$show,contestants$season)
       summarise(numberofplayers = n())
 
 
+#####################################
+##
+  ## season 1 number of dates
+    boardroomoptions %>%
+      filter(season==1 & date != "n/a") %>%
+      group_by(gender) %>%
+      summarise(n=n())
+
+  ## number of people who went on dates
+    boardroomoptions %>%
+      filter(season==1 & date != "n/a") %>%
+      group_by(date) %>%
+      summarise(numberofdatesattended=n()) %>%
+      arrange(desc(numberofdatesattended))
+
+  ## who DIDN"T switch (more people did switch)
+    switchedornot %>%
+      filter(season == 1 & ifmorethanonetheyswitched == 1)
 
 
 
