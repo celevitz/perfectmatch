@@ -72,6 +72,8 @@ table(contestants$show,contestants$season)
         summarise(times=n()) %>%
         arrange(desc(times))
 
+      mean(timestogether$times[timestogether$season == 1])
+
     ## Length of first couples
       firstcouples <- matches %>%
         # flag for first couple
@@ -85,6 +87,8 @@ table(contestants$show,contestants$season)
         group_by(season,person1,person2) %>%
         summarise(lengthofcouple=n()) %>%
         arrange(desc(lengthofcouple))
+
+      mean(firstcouples$lengthofcouple)
 
 
 ## How frequently do people switch couples after going on a date?
